@@ -1,33 +1,27 @@
 """Greeter.
 
 Usage:
-  basic.py hello <name> [--caps] [--greeting=<str>]
-  basic.py goodbye <name> [--caps] [--greeting=<str>]
-  basic.py (-h | --help)
+  greetme.py [--caps] <greeting> <name> 
+  greetme.py (-h | --help)
 
 Options:
   -h --help         Show this screen.
-  --caps            Uppercase the output.
-  --greeting=<str>  Greeting to use [default: Hello].
+  --caps            Will uppercase the output
 
-Commands:
-   hello       Say hello
-   goodbye     Say goodbye
 
 """
 
 from docopt import docopt
 
-HELLO = """usage: basic.py hello [options] [<name>]
+def greet(args):
+    output = 'It works! {} to you I say {}'.format(args['<name>'], args['<greeting>'])
+    if args['--caps']:
+        output = output.upper()
+        print('caps works')
+    print(output)
 
-  -h --help         Show this screen.
-  --caps            Uppercase the output.
-  --greeting=<str>  Greeting to use [default: Hello].
-"""
 
-GOODBYE = """usage: basic.py goodbye [options] [<name>]
-
-  -h --help         Show this screen.
-  --caps            Uppercase the output.
-  --greeting=<str>  Greeting to use [default: Goodbye].
-"""
+if __name__ == '__main__':
+    arguments = docopt(__doc__, options_first=True)
+    print(arguments)
+    greet(arguments)
