@@ -1,7 +1,7 @@
 """Greeter.
 
 Usage:
-  greetme.py [--caps] <greeting> <name> 
+  greetme.py <greeting> <name> [--caps]
   greetme.py (-h | --help)
 
 Options:
@@ -22,6 +22,6 @@ def greet(args):
 
 
 if __name__ == '__main__':
-    arguments = docopt(__doc__, options_first=True)
+    arguments = docopt(__doc__)
     print(arguments)
     greet(arguments)
